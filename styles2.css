@@ -1,0 +1,245 @@
+body {
+  margin: 0;
+  background-color: #87ceeb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Основной контейнер */
+.game-container {
+  width: 600px;
+  height: 650px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  cursor: default;
+}
+
+/* Страница с игрой */
+#introScreen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px;
+}
+
+/* Фон контейнера */
+.header {
+  background-image: url('1.jpg');
+  width: 100%;
+  border-radius: 10px;
+  height: 100%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Блок с заданием */
+.header1 {
+  background-image: linear-gradient(to right, #0b27647c, #588bc549);
+  box-shadow: 0 4px 0 4px rgba(185, 205, 247, 0.158);
+  border-radius: 15px;
+  width: 80%;
+  height: 15%;
+  margin-top: 50px;
+  margin: 16px auto 0;
+}
+
+/* Блок с таймером и уровнем */
+.header2 {
+  background-image: linear-gradient(to right, #0b27647c, #588bc549);
+  width: 100%;
+  text-align: center;
+  color: #dde0e9;
+  text-shadow: 0 0 10px #000;
+  width: 26%;
+  height: 9%;
+  margin: 10px auto 0 auto;
+  border-radius: 15px;
+  display: flex;
+  box-shadow: 0 4px 0 4px rgba(185, 205, 247, 0.158);
+  padding-top: 5px;
+}
+
+/* Пустой блок */
+.header3 {
+  background-image: linear-gradient(to right, #0b27647c, #588bc549);
+  width: 100%;
+  text-align: center;
+  color: #dde0e9;
+  width: 80%;
+  height: 64%;
+  margin: 20px auto 0 auto;
+  border-radius: 15px;
+  display: flex;
+  box-shadow: 0 4px 0 4px rgba(185, 205, 247, 0.158);
+  padding-top: 5px;
+}
+
+.result-image {
+  max-width: 70px;
+  max-height: 70px;
+  display: block;
+  margin: 135px auto 0 auto;
+}
+
+.header1 .text {
+  padding: 15px;
+  margin-top: 10px;
+  font-size: 20px;
+  text-shadow: 0 0 10px #000;
+  color: #fff;
+  text-align: left;
+}
+
+.target-number {
+  font-size: 35px;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 0 0 10px #000;
+  margin: 25px;
+  margin-top: 20px;
+}
+
+/* Для 6 вариантов (3x2) */
+.answers-6 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 15px;
+  width: 100%;
+  padding: 0;
+  margin: 100px 20px 0 20px;
+}
+
+/* Для 12 вариантов (4x3) */
+.answers-12 {
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  width: 100%;
+  padding: 0px;
+  margin: 18px 20px 0 30px;
+}
+
+/* Размер квадратиков */
+.answer-box {
+  width: 75px;
+  height: 75px;
+  font-size: 20px;
+  background-color: #3399ff;
+  color: #fff;
+  text-shadow: 0 0 10px #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s;
+  margin: 16px;
+  position: relative;
+}
+
+/* Мигающий эффект */
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0.5; }
+}
+
+.blink {
+  animation: blink 1s infinite;
+  animation-delay: var(--animation-delay, 0s);
+}
+
+/* Движение вперед и назад */
+@keyframes moveForwardBack {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(var(--amplitude, 20px)); }
+  100% { transform: translateX(0); }
+}
+
+.move-forward-back {
+  animation: moveForwardBack var(--animation-duration, 2s) infinite;
+  animation-delay: var(--animation-delay, 0s);
+}
+
+/* Тряска */
+@keyframes shake {
+  0% { transform: translate(0); }
+  20% { transform: translate(-5px, 0); }
+  40% { transform: translate(5px, 0); }
+  60% { transform: translate(-5px, 0); }
+  80% { transform: translate(5px, 0); }
+  100% { transform: translate(0); }
+}
+
+.shake {
+  animation: shake var(--animation-duration, 0.5s) infinite;
+  animation-delay: var(--animation-delay, 0s);
+}
+
+/* Эффект приближения и отдаления */
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(var(--scale-mid, 0.5));
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-zoom {
+  animation: zoomInOut var(--animation-duration, 1s) ease-in-out infinite;
+  animation-delay: var(--animation-delay, 0s);
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.digit.rotate {
+  display: inline-block;
+  animation: spin 2s linear infinite;
+}
+
+/* Анимация появления и исчезновения */
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: scale(0.8); }
+  10% { opacity: 1; transform: scale(1); }
+  90% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.8); }
+}
+
+.fade-in-out {
+  animation: fadeInOut 1s ease forwards;
+}
+
+@keyframes swipeLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-300px); /* или больше, в зависимости от желаемого расстояния */
+    opacity: 0;
+  }
+}
+
+.swipe-left {
+  animation: swipeLeft 0.5s forwards; /* длительность и режим завершения */
+}
+

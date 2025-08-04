@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Тренажер на внимание</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="game-container" id="gameContainer">
+  <!-- Начальная страница -->
+  <div class="intro-screen" id="introScreen">
+    <div class="header">
+      <p class="title-text">Найди число</p>
+      <p class="text">Тренажер на внимание</p>
+    </div>
+    <div class="description">
+      <p class="title">Тренирует:</p>
+      <div class="text-block">
+        <!-- Первый пункт -->
+        <div class="item">
+          <img src="attention.png" alt="Icon" class="icon" />
+          <p>
+            <span class="bold-text">Произвольное внимание</span> <br />
+            Научитесь концентрировать внимание только на важном
+          </p>
+        </div>
+        <!-- Второй пункт -->
+        <div class="item">
+          <img src="concentration.png" alt="Icon" class="icon" />
+          <p>
+            <span class="bold-text">Концентрацию и переключение внимания</span> <br />
+            Позволит не упускать из виду важные детали
+          </p>
+        </div>
+        <!-- Третий пункт -->
+        <div class="item">
+          <img src="perception.png" alt="Icon" class="icon" />
+          <p>
+            <span class="bold-text">Зрительное восприятие</span> <br />
+            Сможете быстро находить основные мысли в текстах
+          </p>
+        </div>
+      </div>
+    </div>
+    <button class="blue-button" id="startBtn">Далее</button>
+  </div>
+</div>
+
+<script>
+  document.getElementById('startBtn').addEventListener('click', function() {
+    window.location.href = 'index2.html';
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Тренажер на внимание</title>
+<link rel="stylesheet" href="styles3.css" />
+</head>
+<body>
+
+<div class="game-container" id="gameContainer">
+  <!-- Страница с результатами -->
+  <div class="intro-screen" id="introScreen">
+    <div class="header">
+      <p class="title-text">Ваши результаты</p>
+    </div>
+    <div class="result-container">
+      <p id="correctAnswers"></p>
+      <p id="accuracy"></p>
+      <div id="results"></div>
+    </div>
+    <button class="blue-button" id="startBtn">Еще раз?</button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const correct = parseInt(urlParams.get('correct')) || 0;
+    const total = parseInt(urlParams.get('total')) || 12;
+    const time = urlParams.get('time');
+
+    const percentage = (correct / total) * 100;
+    const formattedPercentage = percentage.toFixed(2);
+
+    // Заполняем информацию о результатах
+    document.getElementById('correctAnswers').textContent = `Количество правильных ответов: ${correct} из ${total}`;
+    document.getElementById('accuracy').textContent = `Точность ответов: ${formattedPercentage}%`;
+
+    // Создаем элемент для отображения времени прохождения
+    const timeElement = document.createElement('p');
+    if (time) {
+      timeElement.textContent = `Время прохождения: ${time} секунд`;
+    } else {
+      timeElement.textContent = 'Время не передано';
+    }
+    document.querySelector('.result-container').appendChild(timeElement);
+
+    // Обработка кнопки "Еще раз?"
+    document.getElementById('startBtn').addEventListener('click', () => {
+      window.location.href = 'index.html';
+    });
+  });
+</script>
+</body>
+</html>
